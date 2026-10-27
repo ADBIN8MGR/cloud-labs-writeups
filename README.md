@@ -1,6 +1,6 @@
 # Cloud Labs Write-ups
 
-Two write-ups from my cloud learning in June 2026: the TryHackMe Cloud Computing Fundamentals room and the flaws.cloud AWS security challenge.
+Two write-ups from my cloud learning in 2026, the flaws.cloud one completed during my internship at Eminence Ways: the TryHackMe Cloud Computing Fundamentals room and the flaws.cloud AWS security challenge.
 
 I am a BSc (Hons) Computer System Engineering graduate from Nepal, working towards junior systems, network and cloud roles. I write up every lab I do so I understand it properly and so the next person does not have to start from zero. These are learning labs, not production work.
 
@@ -32,6 +32,8 @@ Each level is a different AWS mistake that really happens in production.
 | 4 | Public EBS snapshot | A public snapshot exposes the whole disk, password files included. Keep snapshots private and encrypted. |
 | 5 | SSRF to the EC2 metadata service | A server that fetches URLs can be tricked into reading its own IAM credentials from 169.254.169.254. IMDSv2 helps. |
 | 6 | Over-permissive read access | Even a read-only auditor can map your whole account. Apply least privilege to everyone. |
+
+On Level 4, the leaked backup user could not create a volume, so I copied the public snapshot into my own AWS account, mounted it on an EC2 instance and read the `.htpasswd` file there.
 
 ## Tools and services I used
 
