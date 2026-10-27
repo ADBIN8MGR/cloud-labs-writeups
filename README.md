@@ -29,7 +29,7 @@ Each level is a different AWS mistake that really happens in production.
 | 1 | Public S3 bucket | Anyone can list and read a bucket with a public ACL. The fix is S3 Block Public Access. |
 | 2 | "Any authenticated AWS user" access | This setting means anyone with any AWS account, not just your team. Name exact accounts or roles instead. |
 | 3 | Keys left in git history | Deleting a file in a new commit does not remove it from history. Rotate any key that was ever committed. |
-| 4 | Public EBS snapshot | A public snapshot exposes the whole disk. I copied it into my own AWS account, mounted it on an EC2 instance and read the .htpasswd file. Keep snapshots private and encrypted. |
+| 4 | Public EBS snapshot | A public snapshot exposes the whole disk, password files included. Keep snapshots private and encrypted. |
 | 5 | SSRF to the EC2 metadata service | A server that fetches URLs can be tricked into reading its own IAM credentials from 169.254.169.254. IMDSv2 helps. |
 | 6 | Over-permissive read access | Even a read-only auditor can map your whole account. Apply least privilege to everyone. |
 
